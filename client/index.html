@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f7f1e5" />
+    <meta name="color-scheme" content="only light" />
+    <title>__PAGE_TITLE__</title>
+    <meta name="description" content="__PAGE_DESCRIPTION__" />
+    <meta
+      name="keywords"
+      content="Akibit, freelance web designer, app design, business websites, landing pages, web development"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Akibit" />
+    <meta property="og:title" content="__PAGE_TITLE__" />
+    <meta property="og:description" content="__PAGE_DESCRIPTION__" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="__PAGE_TITLE__" />
+    <meta name="twitter:description" content="__PAGE_DESCRIPTION__" />
+    <link rel="icon" href="/brand.svg" type="image/svg+xml" />
+    <link
+      rel="preload"
+      href="/fonts/dm-sans.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/instrument-serif.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <script>
+      (function () {
+        var theme = "light";
+        try {
+          var stored = window.localStorage.getItem("akibit-theme");
+          if (stored === "light" || stored === "dark") theme = stored;
+        } catch (error) {}
+        var root = document.documentElement;
+        root.dataset.theme = theme;
+        root.classList.toggle("dark", theme === "dark");
+        root.style.colorScheme = theme === "dark" ? "only dark" : "only light";
+        var meta = document.querySelector('meta[name="color-scheme"]');
+        if (meta) meta.content = root.style.colorScheme;
+      })();
+    </script>
+    __PAGE_EXTRA__
+  </head>
+  <body>
+    <div id="root">__APP_HTML__</div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
