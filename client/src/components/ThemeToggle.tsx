@@ -13,6 +13,7 @@ type Phase = "idle" | "film" | "iris-in" | "iris-out" | "film-out";
 
 const IRIS_MS = 320;
 const FADE_MS = 360;
+const START_GRACE_MS = 2000;
 
 export default function ThemeToggle() {
   const { theme, toggleTheme, switchable } = useTheme();
@@ -26,6 +27,8 @@ export default function ThemeToggle() {
   const skipRef = useRef<HTMLButtonElement>(null);
   const toggleRef = useRef<HTMLButtonElement>(null);
   const finishing = useRef(false);
+  // True only while the film is on screen, so late timers can't flip the theme back.
+  const filmActive = useRef(false);
   // Mount the overlay only after hydration so prerendered markup stays identical.
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
@@ -51,10 +54,12 @@ export default function ThemeToggle() {
     };
   }, [isDark]);
 
-  const finishFilm = useCallback(() => {
-    if (finishing.current || !toggleTheme) return;
+  const finishFilm = useCallback((watched: boolean = true) => {
+    if (finishing.current || !filmActive.current || !toggleTheme) return;
     finishing.current = true;
-    markPortalSeen();
+    filmActive.current = false;
+    // Only a film that actually played counts as seen; a stalled one gets another chance.
+    if (watched) markPortalSeen();
     videoRef.current?.pause();
     toggleTheme();
     setPhase("film-out");
@@ -92,14 +97,20 @@ export default function ThemeToggle() {
     const video = videoRef.current;
     if (!isDark && !portalSeen() && video) {
       // Play inside the click itself: the gesture is what lets the door-close sound through.
+      filmActive.current = true;
       setPhase("film");
       video.currentTime = 0;
       video.muted = false;
       video.play().catch(() => {
         video.muted = true;
-        video.play().catch(finishFilm);
+        video.play().catch(() => finishFilm(false));
       });
       window.setTimeout(() => skipRef.current?.focus(), 50);
+      // Never leave a visitor on a black screen: if the film has not started
+      // within the grace period, go straight to Arcade.
+      window.setTimeout(() => {
+        if (video.readyState < 3 || video.currentTime === 0) finishFilm(false);
+      }, START_GRACE_MS);
       return;
     }
 
@@ -139,8 +150,8 @@ export default function ThemeToggle() {
         src={PORTAL_VIDEO_URL}
         preload="none"
         playsInline
-        onEnded={finishFilm}
-        onError={() => phase === "film" && finishFilm()}
+        onEnded={() => finishFilm()}
+        onError={() => phase === "film" && finishFilm(false)}
         aria-hidden="true"
       />
       {phase === "film" && (
@@ -148,7 +159,7 @@ export default function ThemeToggle() {
           ref={skipRef}
           type="button"
           className="portal-skip"
-          onClick={finishFilm}
+          onClick={() => finishFilm()}
         >
           Skip <SkipForward size={14} />
         </button>
