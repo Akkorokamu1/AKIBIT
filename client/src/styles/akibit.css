@@ -1518,3 +1518,266 @@ html.dark .art-side-label.arcade-only {
     display: none !important;
   }
 }
+
+/* ── 72 seasons ─────────────────────────────────────────────────────── */
+.seasons-section {
+  background: var(--paper);
+  border-block: 1px solid var(--line);
+}
+.seasons-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: 56px;
+  align-items: center;
+}
+.seasons-copy h2 {
+  font-size: 43px;
+  margin-top: 19px;
+}
+.seasons-copy > p {
+  font-size: 14px;
+  line-height: 1.8;
+  max-width: 470px;
+  margin-top: 18px;
+  color: var(--muted);
+}
+.seasons-copy .seasons-aside {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 20px;
+  color: var(--gold-text);
+}
+.season-units {
+  margin-top: 30px;
+  border-top: 1px solid var(--line);
+}
+.season-units > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 13px;
+}
+.season-units dt {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+}
+.season-units dd {
+  color: var(--muted);
+  text-align: right;
+}
+.unit-swatch {
+  width: 18px;
+  height: 4px;
+  border-radius: 2px;
+  display: inline-block;
+}
+.unit-swatch.micro { background: var(--gold); }
+.unit-swatch.term { background: #8a7a52; }
+.unit-swatch.season { background: var(--ink); }
+.season-ring {
+  width: 100%;
+  max-width: 400px;
+  justify-self: center;
+}
+.season-tick { stroke: var(--line); stroke-width: 1.4; }
+.season-highlight { stroke: var(--gold); stroke-width: 28; fill: none; }
+.season-bracket { fill: none; stroke-width: 4; stroke-linecap: round; }
+.season-bracket.term { stroke: #8a7a52; }
+.season-bracket.season { stroke: var(--ink); }
+.season-core { fill: var(--panel); stroke: var(--line); }
+.season-number {
+  font-family: var(--display);
+  font-size: 58px;
+  fill: var(--ink);
+}
+.season-caption {
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  fill: var(--muted);
+}
+
+/* ── Tiers ──────────────────────────────────────────────────────────── */
+.tiers-section {
+  background: #f0ebe2;
+  border-bottom: 1px solid var(--line);
+}
+.tier-band + .tier-band {
+  margin-top: 52px;
+}
+.tier-band-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 20px;
+  padding-bottom: 16px;
+  margin-bottom: 22px;
+  border-bottom: 1px solid var(--line);
+}
+.tier-band-head h3 {
+  font-family: var(--display);
+  font-size: 30px;
+  letter-spacing: -0.02em;
+}
+.tier-band-head h3 em {
+  color: var(--gold-text);
+}
+.tier-band-head > span {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: 17px;
+  color: var(--muted);
+}
+.tier-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+.tier-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+}
+.tier-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold-text);
+}
+.tier-card h4 {
+  font-size: 22px;
+  letter-spacing: -0.03em;
+}
+.tier-card > p {
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--muted);
+  flex: 1;
+}
+.tier-card dl {
+  border-top: 1px solid var(--line);
+}
+.tier-card dl > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 12px;
+}
+.tier-card dt { color: var(--muted); }
+.tier-card dd { font-weight: 600; text-align: right; }
+.tier-card .tier-price {
+  font-family: var(--display);
+  font-size: 19px;
+  font-weight: 400;
+  color: var(--ink);
+}
+.tier-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+}
+.tier-link:hover { color: var(--gold-text); }
+.tiers-note {
+  margin-top: 26px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* ── Power-ups ──────────────────────────────────────────────────────── */
+.powerups-section {
+  background: var(--paper);
+}
+.powerup-grid {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+.powerup-tile {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 22px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 3px;
+}
+.powerup-tile svg { color: var(--gold-text); }
+.powerup-name { font-size: 15px; font-weight: 600; letter-spacing: -0.01em; }
+.powerup-price {
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+  font-family: var(--display);
+  font-size: 18px;
+}
+
+/* Arcade versions */
+html.dark .seasons-section,
+html.dark .powerups-section { background: var(--paper); }
+html.dark .tiers-section { background: var(--soft-panel); }
+html.dark .unit-swatch.term,
+html.dark .season-bracket.term { background: var(--cyan); stroke: var(--cyan); }
+html.dark .unit-swatch.season { background: var(--violet); }
+html.dark .season-bracket.season { stroke: var(--violet); }
+html.dark .seasons-copy .seasons-aside,
+html.dark .tier-band-head > span {
+  font-family: var(--tech);
+  font-style: normal;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+html.dark .tier-band-head h3,
+html.dark .seasons-copy h2 { text-transform: uppercase; }
+html.dark .tier-card,
+html.dark .powerup-tile {
+  background: var(--panel);
+  border-color: var(--line);
+  border-radius: 0;
+}
+html.dark .tier-card:hover,
+html.dark .powerup-tile:hover { border-color: var(--gold); }
+html.dark .tier-badge,
+html.dark .tier-card dt { font-family: monospace; }
+html.dark .tier-card .tier-price,
+html.dark .powerup-price,
+html.dark .season-number { font-family: var(--tech); color: var(--gold); fill: var(--gold); }
+html.dark .tier-link { color: var(--gold); }
+
+@media (max-width: 1100px) {
+  .powerup-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 800px) {
+  .seasons-inner { grid-template-columns: 1fr; gap: 36px; }
+  .tier-grid { grid-template-columns: 1fr; }
+  .tier-band-head { flex-direction: column; gap: 6px; }
+}
+@media (max-width: 640px) {
+  .seasons-copy h2 { font-size: 34px; }
+  .tier-band-head h3 { font-size: 26px; }
+  .powerup-tile { padding: 18px; }
+}
+.tier-grid.cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 800px) {
+  .tier-grid.cols-2 { grid-template-columns: 1fr; }
+}

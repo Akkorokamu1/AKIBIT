@@ -6,7 +6,11 @@ import { sendEnquiry, type EnquiryResult } from "@/lib/enquiryClient";
 const projectTypes = [
   "Landing page",
   "Business website",
+  "Managed site",
+  "Online store",
+  "Platform",
   "Web app",
+  "Ecosystem",
   "App design",
   "Not sure yet",
 ];
@@ -105,15 +109,14 @@ export default function Contact({ projectType }: { projectType: string }) {
             <span className="tiny-square" /> LET'S MAKE IT HAPPEN
           </span>
           <h2 id="contact-title">
-            Your next chapter
+            Your next season
             <br />
-            starts with
-            <br />
-            <em>a conversation.</em>
+            <em>starts now.</em>
           </h2>
           <p>
-            A new business, a better website, or an idea you've been sitting on.
-            Tell me what you're imagining.
+            Build your empire, one season at a time. A new business, a better
+            website, or an idea you've been sitting on: tell me what you're
+            imagining.
           </p>
           <div className="contact-note">
             <span className="asterisk-mark" aria-hidden="true">

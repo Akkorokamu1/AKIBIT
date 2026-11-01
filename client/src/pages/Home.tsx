@@ -3,18 +3,15 @@ import {
   ArrowUpRight,
   ArrowRight,
   Monitor,
-  Layers3,
-  Smartphone,
-  Code2,
   Check,
   MapPin,
   Plus,
   Minus,
   Menu,
   X,
-  Globe2,
 } from "lucide-react";
 import Concepts from "@/components/Concepts";
+import { PowerUps, Seasons, Tiers } from "@/components/Offer";
 import Contact from "@/components/Contact";
 import AkibitHero from "@/components/AkibitHero";
 import ThemeToggle from "@/components/ThemeToggle";
@@ -152,52 +149,22 @@ export function Footer() {
     </footer>
   );
 }
-const services = [
-  {
-    icon: Monitor,
-    index: "01",
-    name: "Business websites",
-    copy: "Your business deserves more than a pin on a map. A clear, credible online home that gives people a reason to choose you.",
-    tags: "Strategy · Design · Development",
-  },
-  {
-    icon: Layers3,
-    index: "02",
-    name: "Landing pages",
-    copy: "One offer. One clear action. Focused pages that help turn interest into enquiries, bookings or your next sale.",
-    tags: "Campaigns · Launches · Lead generation",
-  },
-  {
-    icon: Smartphone,
-    index: "03",
-    name: "App & product design",
-    copy: "Make a useful idea feel effortless. Thoughtful interfaces and user journeys for mobile apps and web-based products.",
-    tags: "UX research · UI design · Prototyping",
-  },
-  {
-    icon: Code2,
-    index: "04",
-    name: "Web app development",
-    copy: "When your idea needs more than a page. Purpose-built web experiences, with the right features and a reliable foundation.",
-    tags: "Scoping · Development · Integration",
-  },
-];
 const phases = [
   {
-    title: "Discover & define",
-    text: "Understand your customers, choose one goal and agree on what must launch. Clear scope before a single screen.",
+    title: "Discover",
+    text: "One goal, one brief. A 15-minute call to agree what the site must do, who it's for and the one action that matters.",
   },
   {
-    title: "Design & align",
-    text: "Get the message right. Shape the mobile journey, then approve one visual direction and a reusable design system.",
+    title: "Live draft",
+    text: "See it working on day two. A real, clickable draft on a preview link, built from your brief, not a static mock-up.",
   },
   {
-    title: "Build & verify",
-    text: "Connect the real customer journey first. Check forms, responsiveness, accessibility foundations and failure states.",
+    title: "Refine",
+    text: "Two revision rounds, included. Changes happen on the live draft, so you judge the real thing.",
   },
   {
-    title: "Launch & hand over",
-    text: "Review together, agree the go-live, keep a fallback and verify the live journey. You leave with access and a practical handover.",
+    title: "Launch",
+    text: "Handover, access, care. You get the code, your accounts and a clear plan for updates, backups and support.",
   },
 ];
 const faqs = [
@@ -215,7 +182,7 @@ const faqs = [
   },
   {
     q: "What will it cost, and how long will it take?",
-    a: "That depends on the scope, content and integrations. After discovery, you'll get a clear proposal covering deliverables, cost, dependencies and a review window. Timelines are agreed around the actual work—not a one-size-fits-all promise.",
+    a: "Every tier above shows a starting price and a timeline, from a landing page in one microseason (5 days) to an ecosystem by proposal. After the discovery call you get a written proposal with the final scope, cost and dates. The clock pauses while we wait on your content or feedback, so the timeline stays honest.",
   },
   {
     q: "How do accessibility and privacy fit in?",
@@ -263,69 +230,9 @@ export default function Home() {
           </div>
         </div>
         <Concepts onEnquire={enquire} />
-        <section
-          className="services-section section-space"
-          id="services"
-          aria-labelledby="services-title"
-        >
-          <div className="page-width">
-            <div className="section-heading">
-              <div>
-                <span className="eyebrow">
-                  <span className="tiny-square" /> WHAT I CAN HELP WITH
-                </span>
-                <h2 id="services-title">
-                  The right experience.
-                  <br />
-                  <em>For your next move.</em>
-                </h2>
-              </div>
-              <p>
-                From your first online presence to a more ambitious product.
-                Start with what your business actually needs.
-              </p>
-            </div>
-            <div className="services-list">
-              {services.map(s => (
-                <article key={s.index} className="service-row">
-                  <span className="service-number">{s.index}</span>
-                  <div className="service-name">
-                    <s.icon size={27} strokeWidth={1.4} />
-                    <h3>{s.name}</h3>
-                  </div>
-                  <div className="service-copy">
-                    <p>{s.copy}</p>
-                    <span>{s.tags}</span>
-                  </div>
-                  <a
-                    href="#contact"
-                    className="service-arrow"
-                    aria-label={`Enquire about ${s.name}`}
-                    onClick={() =>
-                      setProjectType(
-                        s.index === "01"
-                          ? "Business website"
-                          : s.index === "02"
-                            ? "Landing page"
-                            : s.index === "03"
-                              ? "App design"
-                              : "Web app"
-                      )
-                    }
-                  >
-                    <ArrowUpRight size={23} />
-                  </a>
-                </article>
-              ))}
-            </div>
-            <div className="services-foot">
-              <Check size={16} />
-              <span>
-                Responsive by design. Accessible foundations. Clear next steps.
-              </span>
-            </div>
-          </div>
-        </section>
+        <Seasons />
+        <Tiers onEnquire={enquire} />
+        <PowerUps />
         <section
           className="local-section page-width section-space"
           aria-labelledby="local-title"
@@ -400,17 +307,17 @@ export default function Home() {
             <div className="section-heading">
               <div>
                 <span className="eyebrow">
-                  <span className="tiny-square" /> FROM ZERO TO LAUNCH
+                  <span className="tiny-square" /> THE PROCESS
                 </span>
                 <h2 id="process-title">
-                  A clear process.
+                  Live on
                   <br />
-                  <em>Nothing left to guess.</em>
+                  <em>day two.</em>
                 </h2>
               </div>
               <p>
-                Fewer moving parts. One shared direction. The smallest complete
-                experience that does the job well.
+                Yes, really. Four steps, no guesswork. Tier 0 · Seed is built
+                in one microseason: five days from approved content.
               </p>
             </div>
             <div className="process-steps">

@@ -8,6 +8,26 @@ import type { ZodError } from "zod";
 import { enquiries } from "../drizzle/schema";
 import { enquirySchema, type EnquiryInput } from "../shared/enquiry";
 import { getDb } from "./db";
+
+/**
+ * The database enum predates the seven-tier offer. Map newer tiers onto the
+ * closest stored value until a migration adds them; the owner notification
+ * still carries the exact tier the visitor chose.
+ */
+const STORED_TYPE: Record<EnquiryInput["projectType"], (typeof enquiries.$inferInsert)["projectType"]> = {
+  "Landing page": "Landing page",
+  "Business website": "Business website",
+  "Managed site": "Business website",
+  "Online store": "Web app",
+  Platform: "Web app",
+  "Web app": "Web app",
+  Ecosystem: "Web app",
+  "App design": "App design",
+  "Not sure yet": "Not sure yet",
+};
+export function storedProjectType(type: EnquiryInput["projectType"]) {
+  return STORED_TYPE[type];
+}
 import { notifyOwner } from "./_core/notification";
 
 const ENQUIRY_BODY_LIMIT = "16kb";
@@ -183,7 +203,7 @@ enquiryRouter.post("/", async (req, res) => {
       name: parsed.data.name,
       email: parsed.data.email,
       business: parsed.data.business,
-      projectType: parsed.data.projectType,
+      projectType: storedProjectType(parsed.data.projectType),
       businessUrl: parsed.data.businessUrl || null,
       brief: parsed.data.brief,
       privacyNoticeVersion: PRIVACY_NOTICE_VERSION,

@@ -3,7 +3,11 @@ import { z } from "zod";
 export const projectTypes = [
   "Landing page",
   "Business website",
+  "Managed site",
+  "Online store",
+  "Platform",
   "Web app",
+  "Ecosystem",
   "App design",
   "Not sure yet",
 ] as const;
