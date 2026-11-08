@@ -113,6 +113,28 @@ export function ConceptArt({
         </div>
       </div>
     );
+  if (project.theme === "vms")
+    return (
+      <div className={`concept-art vms-art${textOnly}`}>
+        <div className="mini-nav">
+          <span className="mini-vms-logo">VMS</span>
+          <span>WORK · APPROACH · CONTACT</span>
+          <span>START A BRIEF ↗</span>
+        </div>
+        <div className="vms-content">
+          <span className="mini-eyebrow">MARKETING STRATEGY STUDIO</span>
+          <h3>
+            Strategy that
+            <br />
+            <em>sees further.</em>
+          </h3>
+          <p>Clear briefs, measured bets, and reporting you can act on.</p>
+          <span className="mini-cta">
+            Start a brief <ArrowUpRight size={11} />
+          </span>
+        </div>
+      </div>
+    );
   return (
     <div className={`concept-art wellness-art${textOnly}`}>
       <div className="mini-nav">

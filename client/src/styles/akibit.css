@@ -1781,3 +1781,38 @@ html.dark .tier-link { color: var(--gold); }
 @media (max-width: 800px) {
   .tier-grid.cols-2 { grid-template-columns: 1fr; }
 }
+
+/* VMS concept card: fictional marketing studio, text-only art */
+.vms-art {
+  background: #1d2330;
+  color: #f1ede4;
+  padding: 22px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 0;
+}
+.vms-art .mini-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.vms-art .mini-vms-logo {
+  font-family: var(--display);
+  font-size: 22px;
+  letter-spacing: 0;
+}
+.vms-content { min-width: 0; }
+.vms-content h3 {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(30px, 4vw, 44px);
+  line-height: 1.04;
+  margin: 10px 0 10px;
+  text-wrap: balance;
+}
+.vms-content h3 em { color: #9fb2ff; }
+.vms-content p { margin: 0 0 14px; font-size: 14px; opacity: 0.85; max-width: 40ch; }

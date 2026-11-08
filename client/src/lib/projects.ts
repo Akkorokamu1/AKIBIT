@@ -4,7 +4,7 @@ export type Project = {
   name: string;
   business: string;
   category: ProjectCategory;
-  theme: "coffee" | "interior" | "wellness";
+  theme: "coffee" | "interior" | "wellness" | "vms";
   image: string;
   headline: string;
   description: string;
@@ -62,6 +62,23 @@ export const projects: Project[] = [
       "Use clear class descriptions and readable schedules.",
       "Show selected states with text and color, not color alone.",
       "Avoid pressure tactics and explain the next step.",
+    ],
+  },
+  {
+    id: "vms",
+    name: "Visionary Marketing Strategies",
+    business: "Marketing strategy studio",
+    category: "Websites",
+    theme: "vms",
+    image: "",
+    headline: "Strategy that sees further.",
+    description:
+      "A bold, measured home for a marketing studio. From the first impression to the first brief.",
+    goal: "Show the planning process before a visitor is asked to commit.",
+    decisions: [
+      "Lead with one sentence about where the client's market is going.",
+      "Show three steps in the order the work happens.",
+      "Give every section a clear route to starting a brief.",
     ],
   },
 ];
