@@ -1,6 +1,7 @@
 import { Route, Switch } from "wouter";
 import Home from "./pages/Home";
 import Policy from "./pages/Policy";
+import Components from "./pages/Components";
 import NotFound from "./pages/NotFound";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
@@ -17,6 +18,7 @@ export default function App() {
           <Route path="/accessibility">
             <Policy kind="accessibility" />
           </Route>
+          <Route path="/components" component={Components} />
           <Route path="/404" component={NotFound} />
           <Route component={NotFound} />
         </Switch>
